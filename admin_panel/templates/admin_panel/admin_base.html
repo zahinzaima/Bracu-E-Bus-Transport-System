@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock  %}</title>
+
+    <link rel="stylesheet" href="{% static 'admin_panel/admin_base.css' %}">
+    {% block cssfiles %}{% endblock cssfiles %}
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a class="panel_name" href="{% url 'admin' %}">Admin Panel</a>
+            <div class="nav_links">
+                <a href="{% url 'admin_logout' %}">Logout</a>
+            </div>
+        </div>
+        <div class="body">
+            <div class="side_nav">
+                <a href="{% url 'all_users' %}">Users</a>
+                <a href="{% url 'all_staffs' %}">Staffs</a>
+                <a href="{% url 'all_account_requests' %}">Account Requests</a>
+                <a href="{% url 'all_routes' %}">Routes</a>
+            </div>
+            <div class="content">
+                <div class="content-title">
+                    {% block content_title %}{% endblock content_title %}
+                </div>
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

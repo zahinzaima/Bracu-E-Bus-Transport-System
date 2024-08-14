@@ -1,0 +1,68 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block title %}Homepage{% endblock title %}
+{% block cssfiles %}
+  <link rel="stylesheet" href="{% static 'admin_panel/all_users.css' %}">
+  <link rel="stylesheet" href="{% static 'homepage/homepage.css' %}">
+{% endblock cssfiles %}
+
+{% block content %}
+  <div class="body">
+    <div class="route-container">
+      <p class="container-title">Routes</p>
+      <div class="route-table">
+        <table>
+          <tr>
+          <th>Bus No</th>
+          <th>Start</th>
+          <th>D1</th>
+          <th>D2</th>
+          <th>D3</th>
+          <th>End</th>
+          </tr>
+          
+          {% for bus in buses %}
+              <tr>
+                  <td>{{ bus.bus_number }}</td>
+                  <td>{{ bus.d1 }}</td>
+                  <td>{{ bus.d2 }}</td>
+                  <td>{{ bus.d3 }}</td>
+                  <td>{{ bus.d4 }}</td>
+                  <td>{{ bus.d5 }}</td>
+              </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <br></br> 
+
+
+  <div class="container">
+    <p class="container-title">Available Point offers</p>
+    <div class="row">
+      {% for offer in offers %}
+        <div class="col-md-4"> 
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'images/5.jpg' %}" class="card-img-top" alt="..."> 
+              <div class="card-body">
+                <h5 class="card-title">{{offer.offer_name}}</h5>
+                <p class="card-text">Offer will continue up to <h5>{{offer.duration_date}}</h5></p>
+                {% comment %} <a href="#" class="btn btn-dark"></a> {% endcomment %}
+              </div>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+  </div>  
+
+
+
+
+  
+{% endblock content %}

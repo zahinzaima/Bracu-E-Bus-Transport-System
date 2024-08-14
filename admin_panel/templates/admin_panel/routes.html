@@ -1,0 +1,60 @@
+{% extends "admin_panel/admin_base.html" %}
+{% load static %}
+{% block title %}Staff Page{% endblock title %}
+
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'admin_panel/all_users.css' %}">
+    <style>
+        input {
+            width: 5rem;
+        }
+    </style>
+{% endblock cssfiles %}
+
+{% block content_title %}Route Management{% endblock content_title %}
+
+{% block content %}
+    <table>
+ 
+    <tr>
+    <th>Bus No</th>
+    <th>Start</th>
+    <th>D1</th>
+    <th>D2</th>
+    <th>D3</th>
+    <th>End</th>
+    <th>Active</th>
+    <th>Action</th>
+    </tr>
+
+    {% for bus in buses %}
+        <tr>
+            <td>{{ bus.bus_number }}</td>
+            <td>{{ bus.d1 }}</td>
+            <td>{{ bus.d2 }}</td>
+            <td>{{ bus.d3 }}</td>
+            <td>{{ bus.d4 }}</td>
+            <td>{{ bus.d5 }}</td>
+            <td>{{ bus.active }}</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+    {% endfor %}
+
+    {% if form %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <tr>
+                <td>{{ form.bus_number }}</td>
+                <td>{{ form.d1 }}</td>
+                <td>{{ form.d2 }}</td>
+                <td>{{ form.d3 }}</td>
+                <td>{{ form.d4 }}</td>
+                <td>{{ form.d5 }}</td>
+                <td>{{ form.active }}</td>
+                <td><input class="submit" type="submit" value="Add"></td>
+            </tr>
+        </form>
+    {% endif %}
+    </table>
+   
+{% endblock content %}
